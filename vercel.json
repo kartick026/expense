@@ -1,29 +1,28 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.js",
-      "use": "@vercel/node"
+      "source": "/api/auth/(.*)",
+      "destination": "/api/auth.js"
     },
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "source": "/api/expenses/(.*)",
+      "destination": "/api/expenses.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/client/build/$1"
+      "source": "/api/budgets/(.*)",
+      "destination": "/api/budgets.js"
+    },
+    {
+      "source": "/api/summary/(.*)",
+      "destination": "/api/summary.js"
+    },
+    {
+      "source": "/api/export/(.*)",
+      "destination": "/api/export.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
