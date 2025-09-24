@@ -1,24 +1,9 @@
 {
+  "version": 2,
   "rewrites": [
     {
-      "source": "/api/auth/(.*)",
-      "destination": "/api/auth.js"
-    },
-    {
-      "source": "/api/expenses/(.*)",
-      "destination": "/api/expenses.js"
-    },
-    {
-      "source": "/api/budgets/(.*)",
-      "destination": "/api/budgets.js"
-    },
-    {
-      "source": "/api/summary/(.*)",
-      "destination": "/api/summary.js"
-    },
-    {
-      "source": "/api/export/(.*)",
-      "destination": "/api/export.js"
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
     },
     {
       "source": "/(.*)",
