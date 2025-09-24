@@ -1,4 +1,4 @@
-// Main API handler for Vercel
+// Main API handler for Vercel - Single serverless function
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
