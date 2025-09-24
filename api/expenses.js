@@ -1,4 +1,4 @@
-// Expenses API route for Vercel
+// Unified Expenses API Handler for Vercel
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -18,7 +18,7 @@ app.use(express.json());
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker');
 
-// Import expense routes
+// Import all expense-related routes
 const expenseRoutes = require('./routes/expenses');
 
 // Use expense routes

@@ -1,4 +1,4 @@
-// Unified Budgets API Handler for Vercel
+// Unified Analytics API Handler for Vercel
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -18,10 +18,12 @@ app.use(express.json());
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker');
 
-// Import all budget-related routes
-const budgetRoutes = require('./routes/budgets');
+// Import analytics and export routes
+const summaryRoutes = require('./routes/summary');
+const exportRoutes = require('./routes/export');
 
-// Use budget routes
-app.use('/', budgetRoutes);
+// Use routes
+app.use('/summary', summaryRoutes);
+app.use('/export', exportRoutes);
 
 module.exports = app;
