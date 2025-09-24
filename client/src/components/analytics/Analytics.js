@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   ChartBarIcon,
   CalendarIcon,
@@ -26,11 +26,7 @@ const Analytics = () => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
 
-  useEffect(() => {
-    loadAnalyticsData();
-  }, [selectedPeriod, selectedYear, selectedMonth]);
-
-  const loadAnalyticsData = async () => {
+  const loadAnalyticsData = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -91,7 +87,11 @@ const Analytics = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedPeriod, selectedYear, selectedMonth]);
+
+  useEffect(() => {
+    loadAnalyticsData();
+  }, [loadAnalyticsData]);
 
   const handleExport = async (format = 'csv') => {
     try {

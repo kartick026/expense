@@ -2,10 +2,10 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const PaymentMethodChart = ({ data }) => {
-  const COLORS = [
-    '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6',
-    '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6366f1'
-  ];
+  // const COLORS = [
+  //   '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6',
+  //   '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6366f1'
+  // ];
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-IN', {

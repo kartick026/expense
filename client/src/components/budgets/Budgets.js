@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   PlusIcon,
   ExclamationTriangleIcon,
@@ -24,26 +24,22 @@ const Budgets = () => {
     new Date().toISOString().substring(0, 7)
   );
 
-  const categories = [
-    'Food & Dining',
-    'Transportation',
-    'Shopping',
-    'Entertainment',
-    'Healthcare',
-    'Education',
-    'Bills & Utilities',
-    'Travel',
-    'Personal Care',
-    'Subscriptions',
-    'Gifts & Donations',
-    'Other'
-  ];
+  // const categories = [
+  //   'Food & Dining',
+  //   'Transportation',
+  //   'Shopping',
+  //   'Entertainment',
+  //   'Healthcare',
+  //   'Education',
+  //   'Bills & Utilities',
+  //   'Travel',
+  //   'Personal Care',
+  //   'Subscriptions',
+  //   'Gifts & Donations',
+  //   'Other'
+  // ];
 
-  useEffect(() => {
-    loadBudgets();
-  }, [selectedMonth]);
-
-  const loadBudgets = async () => {
+  const loadBudgets = useCallback(async () => {
     try {
       setLoading(true);
       const [budgetsResponse, statusResponse] = await Promise.all([
@@ -59,7 +55,11 @@ const Budgets = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedMonth]);
+
+  useEffect(() => {
+    loadBudgets();
+  }, [loadBudgets]);
 
   const handleBudgetSaved = () => {
     setShowModal(false);

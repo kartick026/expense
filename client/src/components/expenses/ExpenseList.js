@@ -4,7 +4,6 @@ import {
   TrashIcon,
   CurrencyDollarIcon
 } from '@heroicons/react/24/outline';
-import Badge from '../common/Badge';
 import Button from '../common/Button';
 
 const ExpenseList = ({ expenses, onEdit, onDelete, pagination, onPageChange }) => {

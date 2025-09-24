@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   PlusIcon,
   MagnifyingGlassIcon,
-  FunnelIcon,
   ArrowDownTrayIcon
 } from '@heroicons/react/24/outline';
 import { expensesAPI, exportAPI, downloadFile } from '../../services/api';
@@ -12,7 +10,6 @@ import Button from '../common/Button';
 import Input from '../common/Input';
 import Select from '../common/Select';
 import LoadingSpinner from '../common/LoadingSpinner';
-import Badge from '../common/Badge';
 import ExpenseModal from './ExpenseModal';
 import ExpenseList from './ExpenseList';
 import toast from 'react-hot-toast';
@@ -52,11 +49,7 @@ const Expenses = () => {
     'Other'
   ];
 
-  useEffect(() => {
-    loadExpenses();
-  }, [filters, pagination.currentPage]);
-
-  const loadExpenses = async () => {
+  const loadExpenses = useCallback(async () => {
     try {
       setLoading(true);
       const params = {
@@ -81,7 +74,11 @@ const Expenses = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filters, pagination.currentPage, pagination.itemsPerPage]);
+
+  useEffect(() => {
+    loadExpenses();
+  }, [loadExpenses]);
 
   const handleSearch = async () => {
     if (searchQuery.trim().length < 2) {

@@ -128,9 +128,9 @@ const Login = () => {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                <a href="#" className="font-medium text-primary-600 hover:text-primary-500">
+                <button type="button" className="font-medium text-primary-600 hover:text-primary-500">
                   Forgot your password?
-                </a>
+                </button>
               </div>
             </div>
 
@@ -148,13 +148,13 @@ const Login = () => {
         <div className="text-center">
           <p className="text-xs text-gray-500">
             By signing in, you agree to our{' '}
-            <a href="#" className="text-primary-600 hover:text-primary-500">
+            <button type="button" className="text-primary-600 hover:text-primary-500">
               Terms of Service
-            </a>{' '}
+            </button>{' '}
             and{' '}
-            <a href="#" className="text-primary-600 hover:text-primary-500">
+            <button type="button" className="text-primary-600 hover:text-primary-500">
               Privacy Policy
-            </a>
+            </button>
           </p>
         </div>
       </div>

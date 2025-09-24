@@ -4,7 +4,6 @@ import { expensesAPI } from '../../services/api';
 import Button from '../common/Button';
 import Input from '../common/Input';
 import Select from '../common/Select';
-import Card from '../common/Card';
 import toast from 'react-hot-toast';
 
 const ExpenseModal = ({ expense, onClose, onSaved }) => {
@@ -22,6 +21,7 @@ const ExpenseModal = ({ expense, onClose, onSaved }) => {
 
   const categories = [
     'Food & Dining',
+    
     'Transportation',
     'Shopping',
     'Entertainment',
