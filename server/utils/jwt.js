@@ -5,6 +5,9 @@
 
 const jwt = require('jsonwebtoken');
 
+// Ensure JWT_SECRET is available
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-jwt-secret-for-development-only';
+
 /**
  * Generate JWT access token for user
  * @param {Object} user - User object with id and other details
@@ -18,7 +21,7 @@ const generateAccessToken = (user, expiresIn = '7d') => {
     email: user.email
   };
 
-  return jwt.sign(payload, process.env.JWT_SECRET, {
+  return jwt.sign(payload, JWT_SECRET, {
     expiresIn,
     issuer: 'expense-tracker-api',
     audience: 'expense-tracker-client'
@@ -37,7 +40,7 @@ const generateRefreshToken = (user, expiresIn = '30d') => {
     type: 'refresh'
   };
 
-  return jwt.sign(payload, process.env.JWT_SECRET, {
+  return jwt.sign(payload, JWT_SECRET, {
     expiresIn,
     issuer: 'expense-tracker-api',
     audience: 'expense-tracker-client'
@@ -50,7 +53,7 @@ const generateRefreshToken = (user, expiresIn = '30d') => {
  * @returns {Object} - Decoded token payload
  */
 const verifyToken = (token) => {
-  return jwt.verify(token, process.env.JWT_SECRET);
+  return jwt.verify(token, JWT_SECRET);
 };
 
 /**

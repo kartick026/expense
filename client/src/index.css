@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark Mode Styles */
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+}
+
 /* Custom 3D Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -131,6 +156,44 @@
 
 .hover-rotate:hover {
   transform: rotate(5deg) scale(1.05);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-p-2 {
+    padding: 0.5rem;
+  }
+  
+  .mobile-gap-2 {
+    gap: 0.5rem;
+  }
+  
+  /* Touch-friendly buttons */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improved scrolling on mobile */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Dark mode mobile optimizations */
+[data-theme="dark"] .mobile-nav {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+[data-theme="light"] .mobile-nav {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');

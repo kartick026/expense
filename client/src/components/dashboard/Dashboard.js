@@ -21,6 +21,7 @@ import Card from '../common/Card';
 import Button from '../common/Button';
 import LoadingSpinner from '../common/LoadingSpinner';
 import Badge from '../common/Badge';
+import ThemeToggle from '../common/ThemeToggle';
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
@@ -146,6 +147,9 @@ const Dashboard = () => {
 
                    {/* Right side actions */}
                    <div className="flex items-center space-x-2 sm:space-x-3">
+                     {/* Theme Toggle */}
+                     <ThemeToggle />
+                     
                      {/* Quick Add Button */}
                      <Link
                        to="/expenses"
@@ -244,13 +248,13 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className="transform hover:scale-105 transition-transform duration-500">
-                  <h1 className="text-6xl md:text-7xl font-bold text-white mb-2 transform hover:translate-y-2 transition-transform duration-500">
-                    Welcome to{' '}
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2 transform hover:translate-y-2 transition-transform duration-500">
+                    <span className="block sm:inline">Welcome to</span>{' '}
                     <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent animate-pulse transform hover:scale-110 transition-transform duration-500 inline-block">
                       Expensifyr
                     </span>
                   </h1>
-                  <div className="w-32 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 mx-auto rounded-full animate-pulse"></div>
+                  <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-cyan-300 to-blue-300 mx-auto rounded-full animate-pulse"></div>
                 </div>
               </div>
 

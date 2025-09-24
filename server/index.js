@@ -10,6 +10,12 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
+// Debug environment variables
+console.log('🔧 Environment Variables:');
+console.log('JWT_SECRET:', process.env.JWT_SECRET ? '✅ Set' : '❌ Missing');
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? '✅ Set' : '❌ Missing');
+console.log('PORT:', process.env.PORT || '5000');
+
 // Import routes
 const authRoutes = require('./routes/auth');
 const expenseRoutes = require('./routes/expenses');
@@ -45,13 +51,20 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker')
+// MongoDB connection with better options
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker', {
+  serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+})
 .then(() => {
   console.log('✅ Connected to MongoDB successfully');
+  console.log('📊 Database: expense-tracker');
+  console.log('🔗 Connection String:', process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker');
 })
 .catch((error) => {
   console.error('❌ MongoDB connection error:', error);
+  console.error('💡 Make sure MongoDB is running on your system');
+  console.error('💡 Check if MongoDB service is started');
   process.exit(1);
 });
 

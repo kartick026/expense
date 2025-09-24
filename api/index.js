@@ -15,8 +15,19 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker');
+// MongoDB connection with better options
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expense-tracker', {
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+})
+.then(() => {
+  console.log('✅ Connected to MongoDB successfully');
+  console.log('📊 Database: expense-tracker');
+})
+.catch((error) => {
+  console.error('❌ MongoDB connection error:', error);
+  console.error('💡 Make sure MongoDB is running on your system');
+});
 
 // Import all routes
 const authRoutes = require('./routes/auth');

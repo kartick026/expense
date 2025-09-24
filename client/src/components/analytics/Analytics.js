@@ -12,6 +12,7 @@ import CategoryChart from './CategoryChart';
 import SpendingTrendsChart from './SpendingTrendsChart';
 import PaymentMethodChart from './PaymentMethodChart';
 import MonthlySummary from './MonthlySummary';
+import AdvancedCharts from './AdvancedCharts';
 import toast from 'react-hot-toast';
 
 const Analytics = () => {
@@ -326,6 +327,14 @@ const Analytics = () => {
             {analyticsData.monthlySummary && (
               <MonthlySummary data={analyticsData.monthlySummary} />
             )}
+
+            {/* Advanced Charts */}
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Advanced Analytics
+              </h2>
+              <AdvancedCharts data={analyticsData} />
+            </div>
           </div>
         </div>
       </div>
